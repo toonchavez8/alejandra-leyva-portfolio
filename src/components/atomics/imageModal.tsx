@@ -1,16 +1,18 @@
 import {
 	AlertDialog,
-	AlertDialogAction,
 	AlertDialogCancel,
 	AlertDialogContent,
 	AlertDialogDescription,
-	AlertDialogFooter,
 	AlertDialogHeader,
-	AlertDialogTitle,
 	AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-export function ImageModal({ image }) {
+interface Image {
+	src: string;
+	alt: string;
+}
+
+export function ImageModal({ image }: { image: Image }) {
 	return (
 		<AlertDialog>
 			<AlertDialogTrigger asChild>
