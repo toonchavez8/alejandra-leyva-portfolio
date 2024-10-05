@@ -1,4 +1,6 @@
-import { PrismicPreview } from "@prismicio/next";
+  
+import "./globals.css";
+  import { PrismicPreview } from "@prismicio/next";
 import { repositoryName } from "@/prismicio";
 
 export default function RootLayout({
@@ -8,7 +10,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body className="bg-red-600">{children}</body>
       <PrismicPreview repositoryName={repositoryName} />
     </html>
   );
