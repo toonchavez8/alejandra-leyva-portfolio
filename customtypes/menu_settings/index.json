@@ -1,0 +1,68 @@
+{
+  "format": "custom",
+  "id": "menu_settings",
+  "label": " Menu Settings",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "site_name": {
+        "type": "Text",
+        "config": {
+          "label": "Site Name",
+          "placeholder": "Alejandra Leyva"
+        }
+      },
+      "meta_description": {
+        "type": "Text",
+        "config": {
+          "label": "Meta Description",
+          "placeholder": ""
+        }
+      },
+      "general_image": {
+        "type": "Image",
+        "config": {
+          "label": "General Image",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
+      "navigation": {
+        "type": "Group",
+        "config": {
+          "label": "Navigation",
+          "repeat": true,
+          "fields": {
+            "label": {
+              "type": "Text",
+              "config": {
+                "label": "Label",
+                "placeholder": ""
+              }
+            },
+            "link": {
+              "type": "Link",
+              "config": {
+                "label": "Link",
+                "placeholder": "",
+                "allowTargetBlank": true,
+                "select": null,
+                "allowText": true
+              }
+            },
+            "cta_button": {
+              "type": "Boolean",
+              "config": {
+                "label": "CTA button",
+                "placeholder_false": "false",
+                "placeholder_true": "true",
+                "default_value": false
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
