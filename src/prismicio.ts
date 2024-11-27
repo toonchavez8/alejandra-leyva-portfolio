@@ -6,7 +6,7 @@ import sm from "../slicemachine.config.json";
  * The project's Prismic repository name.
  */
 export const repositoryName =
-  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT || sm.repositoryName;
+  process.env.NEXT_PUBLIC_PRISMIC_ENVIRONMENT ??  sm.repositoryName;
 
 /**
  * The project's Prismic Route Resolvers. This list determines a Prismic document's URL.

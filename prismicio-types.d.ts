@@ -56,6 +56,17 @@ interface MenuSettingsDocumentData {
   site_name: prismic.KeyTextField;
 
   /**
+   * subslogan field in * Menu Settings*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Fotógrafa
+   * - **API ID Path**: menu_settings.subslogan
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  subslogan: prismic.KeyTextField;
+
+  /**
    * Meta Description field in * Menu Settings*
    *
    * - **Field Type**: Text

@@ -13,6 +13,13 @@
           "placeholder": "Alejandra Leyva"
         }
       },
+      "subslogan": {
+        "type": "Text",
+        "config": {
+          "label": "subslogan",
+          "placeholder": "Fotógrafa"
+        }
+      },
       "meta_description": {
         "type": "Text",
         "config": {
