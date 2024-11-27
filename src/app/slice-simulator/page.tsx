@@ -8,7 +8,7 @@ import { redirect } from "next/navigation";
 
 import { components } from "@/slices";
 
-export default function SliceSimulatorPage({
+export default async function SliceSimulatorPage({
   searchParams,
 }: SliceSimulatorParams & { searchParams: { secret?: string } }) {
   if (
@@ -17,8 +17,8 @@ export default function SliceSimulatorPage({
   ) {
     redirect("/");
   }
-
-  const slices = getSlices(searchParams.state);
+  const { state } = await searchParams;
+  const slices = getSlices(state);
 
   return (
     <SliceSimulator>
