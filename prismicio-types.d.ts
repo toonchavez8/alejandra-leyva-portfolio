@@ -118,7 +118,7 @@ export type MenuSettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = RichTextSlice;
+type PageDocumentDataSlicesSlice = HeroGridSlice | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -193,6 +193,78 @@ export type PageDocument<Lang extends string = string> =
 export type AllDocumentTypes = MenuSettingsDocument | PageDocument;
 
 /**
+ * Item in *HeroGrid → Default → Primary → Hero Image*
+ */
+export interface HeroGridSliceDefaultPrimaryHeroImageItem {
+  /**
+   * Carusel Image field in *HeroGrid → Default → Primary → Hero Image*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_grid.default.primary.hero_image[].carusel_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  carusel_image: prismic.ImageField<never>;
+
+  /**
+   * Image Description field in *HeroGrid → Default → Primary → Hero Image*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_grid.default.primary.hero_image[].image_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  image_description: prismic.KeyTextField;
+}
+
+/**
+ * Primary content in *HeroGrid → Default → Primary*
+ */
+export interface HeroGridSliceDefaultPrimary {
+  /**
+   * Hero Image field in *HeroGrid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: hero_grid.default.primary.hero_image[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  hero_image: prismic.GroupField<
+    Simplify<HeroGridSliceDefaultPrimaryHeroImageItem>
+  >;
+}
+
+/**
+ * Default variation for HeroGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<HeroGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *HeroGrid*
+ */
+type HeroGridSliceVariation = HeroGridSliceDefault;
+
+/**
+ * HeroGrid Shared Slice
+ *
+ * - **API ID**: `hero_grid`
+ * - **Description**: HeroGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type HeroGridSlice = prismic.SharedSlice<
+  "hero_grid",
+  HeroGridSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -265,6 +337,11 @@ declare module "@prismicio/client" {
       PageDocumentData,
       PageDocumentDataSlicesSlice,
       AllDocumentTypes,
+      HeroGridSlice,
+      HeroGridSliceDefaultPrimaryHeroImageItem,
+      HeroGridSliceDefaultPrimary,
+      HeroGridSliceVariation,
+      HeroGridSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

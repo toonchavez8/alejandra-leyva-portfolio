@@ -1,0 +1,43 @@
+{
+  "id": "hero_grid",
+  "type": "SharedSlice",
+  "name": "HeroGrid",
+  "description": "HeroGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "hero_image": {
+          "type": "Group",
+          "config": {
+            "label": "Hero Image",
+            "repeat": true,
+            "fields": {
+              "carusel_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Carusel Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "image_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Image Description",
+                  "placeholder": ""
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

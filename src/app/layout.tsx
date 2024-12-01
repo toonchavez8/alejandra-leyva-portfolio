@@ -29,7 +29,7 @@ export default function RootLayout({
 			<body>
 				<SidebarProvider>
 					<SideNav />
-					<main>
+					<main className="flex flex-col flex-1 w-full px-4 mx-auto md:px-4">
 						<SidebarTrigger />
 						{children}
 					</main>

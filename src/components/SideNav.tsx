@@ -10,6 +10,7 @@ import {
   SidebarFooter,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { buttonVariants } from "@/components/ui/button"
 
 export default async function SideNav() {
   const client = createClient();
@@ -30,12 +31,12 @@ export default async function SideNav() {
       <SidebarHeader>
         <Link
           href="/"
-          className="flex flex-col items-center mt-4 text-black  hover:scale-105"
+          className="flex flex-col items-center mt-4 text-black hover:scale-105"
         >
-          <span className="w-full text-3xl md:text-[2.625rem] text-center  font-italiana ">
+          <span className="w-full text-3xl md:text-[2rem] text-center  font-italiana ">
             {settings.data.site_name}
           </span>
-          <span className="font-sans text-lg md:text-[1.25rem] font-thin md:font-light -mt-2 md:-mt-0">
+          <span className="font-sans text-lg md:text-[1rem] font-thin md:font-light tracking-[3px] -mt-2 md:-mt-0">
             {settings.data.subslogan}
           </span>
         </Link>
@@ -44,12 +45,12 @@ export default async function SideNav() {
       {/* Sidebar Content */}
       <SidebarContent>
         <SidebarGroup>
-          <SidebarMenu className="items-end gap-4 md:gap-6 pe-4">
+          <SidebarMenu className="items-end self-center gap-4 max-w-60 md:gap-6 pe-4">
             {regularNavItems.map((item) => (
               <SidebarMenuItem key={item.label}>
                 <PrismicNextLink
                   field={item.link}
-                  className="font-sans text-lg font-light text-gray-400 md:text-2xl hover:text-gray-800 hover:scale-110"
+                  className="font-sans text-lg font-light text-gray-950//75 md:text-[18px] hover:text-gray-800 hover:scale-110 antialiased"
                 >
                   {item.label}
                 </PrismicNextLink>
@@ -63,10 +64,19 @@ export default async function SideNav() {
       <SidebarFooter className="items-center gap-4 md:gap-6 pe-4">
         <PrismicNextLink
           field={ctaNavItems[0].link}
-          className="font-sans text-lg font-light text-gray-400 md:text-2xl hover:text-gray-800 "
+          className={buttonVariants({ variant: "outline", class:"text-[18px ] font-sans font-light w-full"}) }
         >
           {ctaNavItems[0].label}
         </PrismicNextLink>
+
+        <div className="flex gap-4 font-sans text-lg font-light text-gray-400">
+          <Link href="/">
+              Eng
+            </Link>
+              <Link href="/">
+              Esp
+              </Link>
+        </div>
       </SidebarFooter>
     </Sidebar>
   );
