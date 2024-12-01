@@ -87,3 +87,9 @@
 * {
 	@apply transition-all ease-in-out duration-300;
 }
+
+.masonry {
+	grid-template-rows: masonry;
+	masonry-auto-flow: next;
+	align-content: start;
+}

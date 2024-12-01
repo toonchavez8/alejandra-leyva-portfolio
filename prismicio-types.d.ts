@@ -118,7 +118,10 @@ export type MenuSettingsDocument<Lang extends string = string> =
     Lang
   >;
 
-type PageDocumentDataSlicesSlice = HeroGridSlice | RichTextSlice;
+type PageDocumentDataSlicesSlice =
+  | PhotoGridSlice
+  | HeroGridSlice
+  | RichTextSlice;
 
 /**
  * Content for Page documents
@@ -265,6 +268,78 @@ export type HeroGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *PhotoGrid → Default → Primary → Grid of Images*
+ */
+export interface PhotoGridSliceDefaultPrimaryGridOfImagesItem {
+  /**
+   * Image field in *PhotoGrid → Default → Primary → Grid of Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.default.primary.grid_of_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Description field in *PhotoGrid → Default → Primary → Grid of Images*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.default.primary.grid_of_images[].image_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  image_description: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *PhotoGrid → Default → Primary*
+ */
+export interface PhotoGridSliceDefaultPrimary {
+  /**
+   * Grid of Images field in *PhotoGrid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.default.primary.grid_of_images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_of_images: prismic.GroupField<
+    Simplify<PhotoGridSliceDefaultPrimaryGridOfImagesItem>
+  >;
+}
+
+/**
+ * Default variation for PhotoGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PhotoGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<PhotoGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *PhotoGrid*
+ */
+type PhotoGridSliceVariation = PhotoGridSliceDefault;
+
+/**
+ * PhotoGrid Shared Slice
+ *
+ * - **API ID**: `photo_grid`
+ * - **Description**: PhotoGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PhotoGridSlice = prismic.SharedSlice<
+  "photo_grid",
+  PhotoGridSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -342,6 +417,11 @@ declare module "@prismicio/client" {
       HeroGridSliceDefaultPrimary,
       HeroGridSliceVariation,
       HeroGridSliceDefault,
+      PhotoGridSlice,
+      PhotoGridSliceDefaultPrimaryGridOfImagesItem,
+      PhotoGridSliceDefaultPrimary,
+      PhotoGridSliceVariation,
+      PhotoGridSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

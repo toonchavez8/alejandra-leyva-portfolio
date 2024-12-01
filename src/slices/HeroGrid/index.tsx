@@ -1,5 +1,5 @@
 "use client";
-import { Content } from "@prismicio/client";
+import { Content, isFilled } from "@prismicio/client";
 import { PrismicNextImage } from "@prismicio/next";
 import { SliceComponentProps } from "@prismicio/react";
 import Autoplay from "embla-carousel-autoplay";
@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/carousel";
 import { useRef } from "react";
 import Bounded from "../../components/atomic/Bounded";
+import { HeroGridSlice } from "../../../prismicio-types";
 /**
  * Props for `HeroGrid`.
  */
@@ -44,7 +45,7 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 								field={item.carusel_image}
 								className="w-full aspect aspect-auto"
 							/>
-							<sub className="absolute top-0 left-8 px-2 py-1 text-lg  bg-black/10  filter mt-4  text-white opacity-0 group-hover:opacity-100  h-fit *:-mt-2 tracking-widest">
+							<sub className="absolute top-0 left-8 px-2 py-1 text-lg  bg-black/10  filter mt-4  text-white opacity-0 group-hover:opacity-100  h-fit *:-mt-2 tracking-widest backdrop-blur-md">
 								{item.image_description}
 							</sub>
 						</CarouselItem>
