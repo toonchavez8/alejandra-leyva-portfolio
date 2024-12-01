@@ -30,7 +30,7 @@ export default async function SideNav() {
       <SidebarHeader>
         <Link
           href="/"
-          className="flex flex-col items-center mt-4 text-black hover:scale-105"
+          className="flex flex-col items-center mt-4 text-black  hover:scale-105"
         >
           <span className="w-full text-3xl md:text-[2.625rem] text-center  font-italiana ">
             {settings.data.site_name}
