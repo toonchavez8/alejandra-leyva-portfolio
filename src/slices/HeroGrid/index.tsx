@@ -11,6 +11,7 @@ import {
 	CarouselPrevious,
 } from "@/components/ui/carousel";
 import { useRef } from "react";
+import Bounded from "../../components/atomic/Bounded";
 /**
  * Props for `HeroGrid`.
  */
@@ -23,10 +24,9 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 	const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }));
 
 	return (
-		<section
+		<Bounded
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="w-full h-full p-0 my-auto "
 		>
 			<Carousel
 				plugins={[plugin.current]}
@@ -53,7 +53,7 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 				<CarouselPrevious />
 				<CarouselNext />
 			</Carousel>
-		</section>
+		</Bounded>
 	);
 };
 

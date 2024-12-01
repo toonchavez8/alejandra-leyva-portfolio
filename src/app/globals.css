@@ -81,6 +81,9 @@
 	}
 }
 
+.debug {
+	@apply border-red-500 border;
+}
 * {
 	@apply transition-all ease-in-out duration-300;
 }

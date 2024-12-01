@@ -29,8 +29,8 @@ export default function RootLayout({
 			<body>
 				<SidebarProvider>
 					<SideNav />
-					<main className="flex flex-col flex-1 w-full px-4 mx-auto md:px-4">
-						<SidebarTrigger />
+					<main className="relative w-full">
+						<SidebarTrigger className="absolute top-0 z-50 left-5" />
 						{children}
 					</main>
 				</SidebarProvider>
