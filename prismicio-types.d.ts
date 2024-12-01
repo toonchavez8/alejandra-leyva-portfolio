@@ -119,6 +119,7 @@ export type MenuSettingsDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | ProjectCardsSlice
   | PhotoGridSlice
   | HeroGridSlice
   | RichTextSlice;
@@ -340,6 +341,108 @@ export type PhotoGridSlice = prismic.SharedSlice<
 >;
 
 /**
+ * Item in *ProjectCards → Default → Primary → Card Group*
+ */
+export interface ProjectCardsSliceDefaultPrimaryCardGroupItem {
+  /**
+   * Card Title field in *ProjectCards → Default → Primary → Card Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_cards.default.primary.card_group[].card_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  card_title: prismic.KeyTextField;
+
+  /**
+   * Gallery Image field in *ProjectCards → Default → Primary → Card Group*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_cards.default.primary.card_group[].gallery_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  gallery_image: prismic.ImageField<never>;
+
+  /**
+   * Button View field in *ProjectCards → Default → Primary → Card Group*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Ver Galería
+   * - **API ID Path**: project_cards.default.primary.card_group[].button_view
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  button_view: prismic.KeyTextField;
+
+  /**
+   * Page Link field in *ProjectCards → Default → Primary → Card Group*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_cards.default.primary.card_group[].page_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  page_link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *ProjectCards → Default → Primary*
+ */
+export interface ProjectCardsSliceDefaultPrimary {
+  /**
+   * Section Title field in *ProjectCards → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Nombre de Section
+   * - **API ID Path**: project_cards.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  section_title: prismic.TitleField;
+
+  /**
+   * Card Group field in *ProjectCards → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: project_cards.default.primary.card_group[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  card_group: prismic.GroupField<
+    Simplify<ProjectCardsSliceDefaultPrimaryCardGroupItem>
+  >;
+}
+
+/**
+ * Default variation for ProjectCards Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectCardsSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<ProjectCardsSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *ProjectCards*
+ */
+type ProjectCardsSliceVariation = ProjectCardsSliceDefault;
+
+/**
+ * ProjectCards Shared Slice
+ *
+ * - **API ID**: `project_cards`
+ * - **Description**: ProjectCards
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectCardsSlice = prismic.SharedSlice<
+  "project_cards",
+  ProjectCardsSliceVariation
+>;
+
+/**
  * Primary content in *RichText → Default → Primary*
  */
 export interface RichTextSliceDefaultPrimary {
@@ -422,6 +525,11 @@ declare module "@prismicio/client" {
       PhotoGridSliceDefaultPrimary,
       PhotoGridSliceVariation,
       PhotoGridSliceDefault,
+      ProjectCardsSlice,
+      ProjectCardsSliceDefaultPrimaryCardGroupItem,
+      ProjectCardsSliceDefaultPrimary,
+      ProjectCardsSliceVariation,
+      ProjectCardsSliceDefault,
       RichTextSlice,
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,

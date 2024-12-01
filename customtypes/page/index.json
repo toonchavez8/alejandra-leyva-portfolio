@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "project_cards": {
+              "type": "SharedSlice"
+            },
             "photo_grid": {
               "type": "SharedSlice"
             },
