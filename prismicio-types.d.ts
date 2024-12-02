@@ -119,6 +119,7 @@ export type MenuSettingsDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | TwoColContentSlice
   | ProjectCardsSlice
   | PhotoGridSlice
   | HeroGridSlice
@@ -487,6 +488,81 @@ export type RichTextSlice = prismic.SharedSlice<
   RichTextSliceVariation
 >;
 
+/**
+ * Primary content in *TwoColContent → Default → Primary*
+ */
+export interface TwoColContentSliceDefaultPrimary {
+  /**
+   * Header field in *TwoColContent → Default → Primary*
+   *
+   * - **Field Type**: Title
+   * - **Placeholder**: Nombre de pagina
+   * - **API ID Path**: two_col_content.default.primary.header
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  header: prismic.TitleField;
+
+  /**
+   * Contenido  field in *TwoColContent → Default → Primary*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col_content.default.primary.contenido
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  contenido: prismic.RichTextField;
+
+  /**
+   * Imagen field in *TwoColContent → Default → Primary*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: two_col_content.default.primary.imagen
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  imagen: prismic.ImageField<never>;
+
+  /**
+   * CV Download field in *TwoColContent → Default → Primary*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Descarga CV
+   * - **API ID Path**: two_col_content.default.primary.cv_download
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  cv_download: prismic.LinkField;
+}
+
+/**
+ * Default variation for TwoColContent Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TwoColContentSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<TwoColContentSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *TwoColContent*
+ */
+type TwoColContentSliceVariation = TwoColContentSliceDefault;
+
+/**
+ * TwoColContent Shared Slice
+ *
+ * - **API ID**: `two_col_content`
+ * - **Description**: TwoColContent
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type TwoColContentSlice = prismic.SharedSlice<
+  "two_col_content",
+  TwoColContentSliceVariation
+>;
+
 declare module "@prismicio/client" {
   interface CreateClient {
     (
@@ -534,6 +610,10 @@ declare module "@prismicio/client" {
       RichTextSliceDefaultPrimary,
       RichTextSliceVariation,
       RichTextSliceDefault,
+      TwoColContentSlice,
+      TwoColContentSliceDefaultPrimary,
+      TwoColContentSliceVariation,
+      TwoColContentSliceDefault,
     };
   }
 }

@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "two_col_content": {
+              "type": "SharedSlice"
+            },
             "project_cards": {
               "type": "SharedSlice"
             },

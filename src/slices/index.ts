@@ -7,4 +7,5 @@ export const components = {
   photo_grid: dynamic(() => import("./PhotoGrid")),
   project_cards: dynamic(() => import("./ProjectCards")),
   rich_text: dynamic(() => import("./RichText")),
+  two_col_content: dynamic(() => import("./TwoColContent")),
 };
