@@ -29,7 +29,7 @@ export default function RootLayout({
 			<body>
 				<SidebarProvider>
 					<SideNav />
-					<main className="relative w-full">
+					<main className="relative w-full @container">
 						<SidebarTrigger className="absolute top-0 z-50 left-5" />
 						{children}
 					</main>

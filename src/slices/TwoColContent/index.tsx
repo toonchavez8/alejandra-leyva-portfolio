@@ -20,9 +20,9 @@ const TwoColContent = ({ slice }: TwoColContentProps): JSX.Element => {
 		<Bounded
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
-			className="h-full debg"
+			className="h-full "
 		>
-			<article className="flex flex-col-reverse h-full max-w-5xl gap-6 font-sans text-justify sm:flex-row ">
+			<article className="flex flex-col-reverse h-full max-w-5xl gap-6 font-sans text-justify @xl:flex-col-reverse @2xl:flex-row">
 				<PrismicRichText field={slice.primary.contenido} />
 				<PrismicNextImage
 					field={slice.primary.imagen}
@@ -30,7 +30,7 @@ const TwoColContent = ({ slice }: TwoColContentProps): JSX.Element => {
 				/>
 			</article>
 			{slice.primary.cv_download && (
-				<div className="self-start mt-10 md:mt-[8.7rem]">
+				<div className="self-start mt-10 md:mt-[8.7rem] max-w-5xl ">
 					<PrismicNextLink
 						field={slice.primary.cv_download}
 						className="inline-block"
