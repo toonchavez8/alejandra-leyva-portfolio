@@ -119,6 +119,7 @@ export type MenuSettingsDocument<Lang extends string = string> =
   >;
 
 type PageDocumentDataSlicesSlice =
+  | MediaGridSlice
   | TwoColContentSlice
   | ProjectCardsSlice
   | PhotoGridSlice
@@ -267,6 +268,78 @@ type HeroGridSliceVariation = HeroGridSliceDefault;
 export type HeroGridSlice = prismic.SharedSlice<
   "hero_grid",
   HeroGridSliceVariation
+>;
+
+/**
+ * Item in *MediaGrid → Default → Primary → Media Stories*
+ */
+export interface MediaGridSliceDefaultPrimaryMediastoriesItem {
+  /**
+   * Page Link field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid.default.primary.mediastories[].page_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  page_link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *MediaGrid → Default → Primary*
+ */
+export interface MediaGridSliceDefaultPrimary {
+  /**
+   * Page Title field in *MediaGrid → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Titulo de pagina
+   * - **API ID Path**: media_grid.default.primary.pagetitle
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  pagetitle: prismic.KeyTextField;
+
+  /**
+   * Media Stories field in *MediaGrid → Default → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid.default.primary.mediastories[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  mediastories: prismic.GroupField<
+    Simplify<MediaGridSliceDefaultPrimaryMediastoriesItem>
+  >;
+}
+
+/**
+ * Default variation for MediaGrid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaGridSliceDefault = prismic.SharedSliceVariation<
+  "default",
+  Simplify<MediaGridSliceDefaultPrimary>,
+  never
+>;
+
+/**
+ * Slice variation for *MediaGrid*
+ */
+type MediaGridSliceVariation = MediaGridSliceDefault;
+
+/**
+ * MediaGrid Shared Slice
+ *
+ * - **API ID**: `media_grid`
+ * - **Description**: MediaGrid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaGridSlice = prismic.SharedSlice<
+  "media_grid",
+  MediaGridSliceVariation
 >;
 
 /**
@@ -596,6 +669,11 @@ declare module "@prismicio/client" {
       HeroGridSliceDefaultPrimary,
       HeroGridSliceVariation,
       HeroGridSliceDefault,
+      MediaGridSlice,
+      MediaGridSliceDefaultPrimaryMediastoriesItem,
+      MediaGridSliceDefaultPrimary,
+      MediaGridSliceVariation,
+      MediaGridSliceDefault,
       PhotoGridSlice,
       PhotoGridSliceDefaultPrimaryGridOfImagesItem,
       PhotoGridSliceDefaultPrimary,

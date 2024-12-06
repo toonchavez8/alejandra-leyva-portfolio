@@ -1,0 +1,45 @@
+{
+  "id": "media_grid",
+  "type": "SharedSlice",
+  "name": "MediaGrid",
+  "description": "MediaGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "pagetitle": {
+          "type": "Text",
+          "config": {
+            "label": "Page Title",
+            "placeholder": "Titulo de pagina"
+          }
+        },
+        "mediastories": {
+          "type": "Group",
+          "config": {
+            "label": "Media Stories",
+            "repeat": true,
+            "fields": {
+              "page_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Page Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

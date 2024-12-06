@@ -27,6 +27,9 @@
         "fieldset": "Slice Zone",
         "config": {
           "choices": {
+            "media_grid": {
+              "type": "SharedSlice"
+            },
             "two_col_content": {
               "type": "SharedSlice"
             },
