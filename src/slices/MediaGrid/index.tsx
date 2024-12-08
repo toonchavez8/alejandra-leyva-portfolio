@@ -1,80 +1,114 @@
 "use client";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
 import Bounded from "@/components/atomic/Bounded";
+import { Content } from "@prismicio/client";
+import { PrismicNextImage, PrismicNextLink } from "@prismicio/next";
 
-type MediaGridProps = {
-	slice: {
-		slice_type: string;
-		variation: string;
-		primary: {
-			mediastories: Array<{ page_link: { url: string } }>;
-		};
-	};
-};
+import { SliceComponentProps } from "@prismicio/react";
+import {
+	Card,
+	CardContent,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from "@/components/ui/card";
+import Link from "next/link";
 
-type Metadata = {
-	title: string;
-	description: string;
-	image: string;
-	siteName: string;
-};
-
-const fetchMetadata = async (url: string): Promise<Metadata> => {
-	try {
-		const response = await axios.get(`/api/fetch-metadata?url=${url}`);
-		return response.data;
-	} catch {
-		return {
-			title: "Unknown",
-			description: "No description available",
-			image: "/placeholder-image.png",
-			siteName: "N/A",
-		};
-	}
-};
+export type MediaGridProps = SliceComponentProps<Content.MediaGridSlice>;
 
 const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
-	const [metaData, setMetaData] = useState<Metadata[]>([]);
-
-	useEffect(() => {
-		const fetchAllMetadata = async () => {
-			const data = await Promise.all(
-				slice.primary.mediastories.map((story) =>
-					fetchMetadata(story.page_link.url)
-				)
-			);
-			setMetaData(data);
-		};
-
-		fetchAllMetadata();
-	}, [slice]);
-
 	return (
 		<Bounded
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
+			className="@container "
 		>
-			<div className="media-grid">
-				{metaData.map((data, index) => (
-					<a
-						key={index}
-						href={slice.primary.mediastories[index].page_link.url}
-						className="media-card"
-						target="_blank"
-						rel="noopener noreferrer"
-					>
-						<img
-							src={data.image}
-							alt={data.title}
-							className="media-card-image"
-						/>
-						<div className="media-card-content">
-							<h3 className="media-card-title">{data.title}</h3>
-							<p className="media-card-description">{data.description}</p>
-							<span className="media-card-site">{data.siteName.charAt(0)}</span>
-						</div>
-					</a>
+			{slice.primary.pagetitle && (
+				<h2 className="font-italiana self-start ps-8 text-2xl md:text-3xl  ">
+					{slice.primary.pagetitle}
+				</h2>
+			)}
+			<div className=" flex w-full flex-wrap gap-2 justify-center @sm:justify-center @md:justify-around">
+				{slice.primary.mediastories.map((item, index) => (
+					<Link key={index} href={item.page_link.url} target="_blank">
+						<Card className="flex flex-col gap-2 p-2 items-center w-full max-w-[300px] mx-auto rounded hover:shadow-lg">
+							<CardHeader className="">
+								{/* Render the image with fallback logic */}
+								{item.article_image_link?.url ? (
+									<img
+										src={item.article_image_link.url}
+										alt={item.article_name || "Article Image"}
+										className="w-full h-auto aspect-[3/2] object-cover"
+									/>
+								) : item.article_image ? (
+									<PrismicNextImage
+										field={item.article_image}
+										className="w-full h-auto aspect-[3/2] object-cover"
+										alt={item.article_name || "Article Image"}
+									/>
+								) : (
+									<div className="w-full aspect-w-16 aspect-h-9 flex items-center justify-center bg-gray-800 text-gray-400">
+										{/* Placeholder icon */}
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											className="h-12 w-12"
+											fill="none"
+											viewBox="0 0 24 24"
+											stroke="currentColor"
+											strokeWidth="2"
+										>
+											<path
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												d="M3 10l1.553-4.66A1 1 0 015.487 4h13.026a1 1 0 01.934.66L21 10m-18 0h18m-9 4a4 4 0 100-8 4 4 0 000 8zm6 2v4a1 1 0 01-1 1H7a1 1 0 01-1-1v-4m12 0h2a1 1 0 011 1v1m-16-1a1 1 0 011-1h2"
+											/>
+										</svg>
+									</div>
+								)}
+							</CardHeader>
+
+							<CardContent className="flex flex-col gap-2 ">
+								{/* Render the article details */}
+								<CardTitle>{item.article_name}</CardTitle>
+								<CardDescription className=" text-balance line-clamp-2 ">
+									{item.article_description}
+								</CardDescription>
+								<CardDescription className="text-center font-semibold">
+									Leer mas
+								</CardDescription>
+							</CardContent>
+
+							<CardFooter className="flex  gap-2 w-full  items-center">
+								<PrismicNextLink field={item.media_icon_link}>
+									<img
+										src={item.media_icon_link?.url}
+										alt="Media Icon"
+										className="w-6 h-6 rounded-full object-contain bg-white border border-slate-100"
+									/>
+								</PrismicNextLink>
+								<p className="font-bold text-sm capitalize">
+									{item.editorial_name}
+								</p>
+								{/* Render the media icon link */}
+								<time
+									dateTime={item.date_of_publication || ""}
+									className="font-bold text-sm capitalize"
+								>
+									|{"  "}
+									{item.date_of_publication
+										? new Date(item.date_of_publication).toLocaleDateString(
+												"es-MX",
+												{
+													year: "numeric",
+													month: "short",
+												}
+											)
+										: "Fecha desconocida"}
+								</time>
+							</CardFooter>
+						</Card>
+					</Link>
 				))}
 			</div>
 		</Bounded>

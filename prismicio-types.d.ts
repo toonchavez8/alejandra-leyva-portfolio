@@ -275,6 +275,36 @@ export type HeroGridSlice = prismic.SharedSlice<
  */
 export interface MediaGridSliceDefaultPrimaryMediastoriesItem {
   /**
+   * Article Image Link field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Liga de alguna imagen representativa del articulo
+   * - **API ID Path**: media_grid.default.primary.mediastories[].article_image_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  article_image_link: prismic.LinkField;
+
+  /**
+   * Article Image field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid.default.primary.mediastories[].article_image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  article_image: prismic.ImageField<never>;
+
+  /**
+   * Article Name field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid.default.primary.mediastories[].article_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  article_name: prismic.KeyTextField;
+
+  /**
    * Page Link field in *MediaGrid → Default → Primary → Media Stories*
    *
    * - **Field Type**: Link
@@ -283,6 +313,46 @@ export interface MediaGridSliceDefaultPrimaryMediastoriesItem {
    * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
    */
   page_link: prismic.LinkField;
+
+  /**
+   * Article Description field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: media_grid.default.primary.mediastories[].article_description
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  article_description: prismic.KeyTextField;
+
+  /**
+   * Date of Publication field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Date
+   * - **Placeholder**: Fecha de publicacion
+   * - **API ID Path**: media_grid.default.primary.mediastories[].date_of_publication
+   * - **Documentation**: https://prismic.io/docs/field#date
+   */
+  date_of_publication: prismic.DateField;
+
+  /**
+   * Editorial Name field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Nombre de editorial
+   * - **API ID Path**: media_grid.default.primary.mediastories[].editorial_name
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  editorial_name: prismic.KeyTextField;
+
+  /**
+   * Media Icon Link field in *MediaGrid → Default → Primary → Media Stories*
+   *
+   * - **Field Type**: Link
+   * - **Placeholder**: Liga de logo o icon de editorial
+   * - **API ID Path**: media_grid.default.primary.mediastories[].media_icon_link
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  media_icon_link: prismic.LinkField;
 }
 
 /**
