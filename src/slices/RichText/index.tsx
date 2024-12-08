@@ -28,7 +28,7 @@ type RichTextProps = SliceComponentProps<Content.RichTextSlice>;
  */
 const RichText = ({ slice }: RichTextProps): JSX.Element => {
 	return (
-		<Bounded className="flex flex-col gap-5 debug text-balance ">
+		<Bounded className="flex flex-col gap-5 text-balance ">
 			<article className="flex flex-col gap-5 max-w-3xl ">
 				<PrismicRichText
 					field={slice.primary.content}
