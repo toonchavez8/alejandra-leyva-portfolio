@@ -1,15 +1,23 @@
-import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-import { NavBar } from "@/components/layout/navBar";
+import { PrismicPreview } from "@prismicio/next";
+import { repositoryName } from "@/prismicio";
+import { Italiana, Lato } from "next/font/google";
+import SideNav from "@/components/SideNav";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
-const inter = Inter({ subsets: ["latin"] });
+const italiana = Italiana({
+	subsets: ["latin"],
+	weight: "400",
+	display: "swap",
+	variable: "--font-Italiana",
+});
 
-export const metadata: Metadata = {
-	title: "Alejandra Leyva - Fotografa",
-	description:
-		"Portfolio de Alejandra Leyva que hace fotoperiodismo con una experiencia creativa y un enfoque en la fotografía.",
-};
+const lato = Lato({
+	subsets: ["latin"],
+	weight: ["100", "300", "400", "700", "900"],
+	display: "swap",
+	variable: "--font-lato",
+});
 
 export default function RootLayout({
 	children,
@@ -17,11 +25,17 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html lang="en">
-			<body className={inter.className + " flex  flex-col  "}>
-				<NavBar />
-				{children}
+		<html lang="en" className={`${lato.variable} ${italiana.variable}`}>
+			<body className="bg-[#dfe0e0]">
+				<SidebarProvider>
+					<SideNav />
+					<main className="relative w-full @container bg-[#dfe0e0]">
+						<SidebarTrigger className="absolute top-0 z-50 left-5" />
+						{children}
+					</main>
+				</SidebarProvider>
 			</body>
+			<PrismicPreview repositoryName={repositoryName} />
 		</html>
 	);
 }

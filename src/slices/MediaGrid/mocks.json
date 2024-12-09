@@ -1,0 +1,115 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"pagetitle": {
+				"__TYPE__": "FieldContent",
+				"value": "rice",
+				"type": "Text"
+			},
+			"mediastories": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"page_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "exciting"
+									}
+								}
+							],
+							[
+								"article_description",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "because",
+									"type": "Text"
+								}
+							],
+							[
+								"article_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "faster",
+									"type": "Text"
+								}
+							],
+							[
+								"article_image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
+										"width": 3199,
+										"height": 3199
+									},
+									"url": "https://images.unsplash.com/photo-1600804931749-2da4ce26c869",
+									"width": 3199,
+									"height": 3199,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"article_image_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "perfectly"
+									}
+								}
+							],
+							[
+								"date_of_publication",
+								{
+									"__TYPE__": "FieldContent",
+									"type": "Date",
+									"value": "2017-09-29"
+								}
+							],
+							[
+								"editorial_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "wheel",
+									"type": "Text"
+								}
+							],
+							[
+								"media_icon_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "laid"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

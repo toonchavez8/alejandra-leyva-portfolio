@@ -1,0 +1,83 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"section_title": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Organized"
+						}
+					}
+				]
+			},
+			"card_group": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"card_title",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "butter",
+									"type": "Text"
+								}
+							],
+							[
+								"gallery_image",
+								{
+									"origin": {
+										"id": "main",
+										"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+										"width": 2747,
+										"height": 4120
+									},
+									"url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+									"width": 2747,
+									"height": 4120,
+									"edit": {
+										"zoom": 1,
+										"crop": {
+											"x": 0,
+											"y": 0
+										},
+										"background": "transparent"
+									},
+									"credits": null,
+									"alt": null,
+									"__TYPE__": "ImageContent",
+									"thumbnails": {}
+								}
+							],
+							[
+								"button_view",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "gate",
+									"type": "Text"
+								}
+							],
+							[
+								"page_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://prismic.io",
+										"text": "both"
+									}
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

@@ -1,0 +1,69 @@
+{
+  "id": "project_cards",
+  "type": "SharedSlice",
+  "name": "ProjectCards",
+  "description": "ProjectCards",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "section_title": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "Nombre de Section",
+            "allowTargetBlank": true,
+            "single": "heading1,heading2"
+          }
+        },
+        "card_group": {
+          "type": "Group",
+          "config": {
+            "label": "Card Group",
+            "repeat": true,
+            "fields": {
+              "card_title": {
+                "type": "Text",
+                "config": {
+                  "label": "Card Title",
+                  "placeholder": ""
+                }
+              },
+              "gallery_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Gallery Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "button_view": {
+                "type": "Text",
+                "config": {
+                  "label": "Button View",
+                  "placeholder": "Ver Galería"
+                }
+              },
+              "page_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Page Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

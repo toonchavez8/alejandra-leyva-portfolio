@@ -1,0 +1,45 @@
+{
+  "id": "photo_grid",
+  "type": "SharedSlice",
+  "name": "PhotoGrid",
+  "description": "PhotoGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "grid_of_images": {
+          "type": "Group",
+          "config": {
+            "label": "Grid of Images",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "image_description": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Image Description",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,heading2,heading3,heading4,heading5,heading6,strong,em,list-item,o-list-item,rtl"
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

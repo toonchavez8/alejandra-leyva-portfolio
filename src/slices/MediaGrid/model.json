@@ -1,0 +1,101 @@
+{
+  "id": "media_grid",
+  "type": "SharedSlice",
+  "name": "MediaGrid",
+  "description": "MediaGrid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "pagetitle": {
+          "type": "Text",
+          "config": {
+            "label": "Page Title",
+            "placeholder": "Titulo de pagina"
+          }
+        },
+        "mediastories": {
+          "type": "Group",
+          "config": {
+            "label": "Media Stories",
+            "repeat": true,
+            "fields": {
+              "article_image_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Article Image Link",
+                  "placeholder": "Liga de alguna imagen representativa del articulo",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "article_image": {
+                "type": "Image",
+                "config": {
+                  "label": "Article Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "article_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Article Name",
+                  "placeholder": ""
+                }
+              },
+              "page_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Page Link",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              },
+              "article_description": {
+                "type": "Text",
+                "config": {
+                  "label": "Article Description",
+                  "placeholder": ""
+                }
+              },
+              "date_of_publication": {
+                "type": "Date",
+                "config": {
+                  "label": "Date of Publication",
+                  "placeholder": "Fecha de publicacion"
+                }
+              },
+              "editorial_name": {
+                "type": "Text",
+                "config": {
+                  "label": "Editorial Name",
+                  "placeholder": "Nombre de editorial "
+                }
+              },
+              "media_icon_link": {
+                "type": "Link",
+                "config": {
+                  "label": "Media Icon Link",
+                  "placeholder": "Liga de logo o icon de editorial ",
+                  "allowTargetBlank": true,
+                  "select": null,
+                  "allowText": true
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

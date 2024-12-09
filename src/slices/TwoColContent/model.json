@@ -1,0 +1,55 @@
+{
+  "id": "two_col_content",
+  "type": "SharedSlice",
+  "name": "TwoColContent",
+  "description": "TwoColContent",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "header": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Header",
+            "placeholder": "Nombre de pagina",
+            "allowTargetBlank": true,
+            "single": "heading1"
+          }
+        },
+        "contenido": {
+          "type": "StructuredText",
+          "config": {
+            "label": "Contenido ",
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "imagen": {
+          "type": "Image",
+          "config": {
+            "label": "Imagen",
+            "constraint": {},
+            "thumbnails": []
+          }
+        },
+        "cv_download": {
+          "type": "Link",
+          "config": {
+            "label": "CV Download",
+            "placeholder": "Descarga CV",
+            "allowTargetBlank": true,
+            "select": null,
+            "allowText": true
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
