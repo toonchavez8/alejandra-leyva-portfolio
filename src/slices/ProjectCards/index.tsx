@@ -28,19 +28,18 @@ export type ProjectCardsProps = SliceComponentProps<Content.ProjectCardsSlice>;
 				</h2>
 				<div className="grid gap-4 justify-items-end md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 ">
 					{slice.primary.card_group.map((item) => (
-						<article
-							key={item.card_title}
-							className="flex flex-col justify-end gap-2 p-4 text-balance "
-						>
-							<h3 className="text-lg ">{item.card_title}</h3>
-							<PrismicNextImage
-								field={item.gallery_image}
-								className="object-cover aspect aspect-video"
-							/>
-							<Button variant={"link"} className="">
-								{item.button_view || "Ver Galería"}
-							</Button>
-						</article>
+						<PrismicNextLink key={item.card_title} field={item.page_link}>
+							<article className="flex flex-col justify-end gap-2 p-4 text-balance ">
+								<h3 className="text-lg ">{item.card_title}</h3>
+								<PrismicNextImage
+									field={item.gallery_image}
+									className="object-cover aspect aspect-video"
+								/>
+								<Button variant={"link"} className="">
+									{item.button_view || "Ver Galería"}
+								</Button>
+							</article>
+						</PrismicNextLink>
 					))}
 				</div>
 			</div>

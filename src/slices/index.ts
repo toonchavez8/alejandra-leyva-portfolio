@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 
 export const components = {
+  contact: dynamic(() => import("./Contact")),
   hero_grid: dynamic(() => import("./HeroGrid")),
   media_grid: dynamic(() => import("./MediaGrid")),
   photo_grid: dynamic(() => import("./PhotoGrid")),

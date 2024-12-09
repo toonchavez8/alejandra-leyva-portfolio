@@ -1,0 +1,43 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"email": {
+				"__TYPE__": "FieldContent",
+				"value": "race",
+				"type": "Text"
+			},
+			"social_media": {
+				"__TYPE__": "GroupContentType",
+				"value": [
+					{
+						"__TYPE__": "GroupItemContent",
+						"value": [
+							[
+								"social_media_link",
+								{
+									"__TYPE__": "LinkContent",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://twitter.com",
+										"text": "mirror"
+									}
+								}
+							],
+							[
+								"user_name",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "earn",
+									"type": "Text"
+								}
+							]
+						]
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
