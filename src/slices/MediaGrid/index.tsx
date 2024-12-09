@@ -42,7 +42,7 @@ const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
 			className="@container "
 		>
 			{slice.primary.pagetitle && (
-				<h2 className="font-italiana self-start ps-8 text-2xl md:text-3xl  ">
+				<h2 className="self-start text-2xl font-italiana ps-8 md:text-3xl ">
 					{slice.primary.pagetitle}
 				</h2>
 			)}
@@ -54,7 +54,7 @@ const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
 
 					return (
 						<Link key={index} href={pageLinkUrl} target="_blank">
-							<Card className="flex flex-col gap-2 p-2 items-center w-full max-w-[300px] mx-auto rounded hover:shadow-lg">
+							<Card className="flex flex-col gap-2 p-2  items-center w-full max-w-[300px] mx-auto rounded hover:shadow-lg">
 								<CardHeader className="">
 									{/* Render the image with fallback logic */}
 									{item.article_image_link?.url ? (
@@ -69,11 +69,11 @@ const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
 											className="w-full h-auto aspect-[3/2] object-cover"
 										/>
 									) : (
-										<div className="w-full aspect-w-16 aspect-h-9 flex items-center justify-center bg-gray-800 text-gray-400">
+										<div className="flex items-center justify-center w-full text-gray-400 bg-gray-800 aspect-w-16 aspect-h-9">
 											{/* Placeholder icon */}
 											<svg
 												xmlns="http://www.w3.org/2000/svg"
-												className="h-12 w-12"
+												className="w-12 h-12"
 												fill="none"
 												viewBox="0 0 24 24"
 												stroke="currentColor"
@@ -95,25 +95,25 @@ const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
 									<CardDescription className="text-balance line-clamp-2">
 										{item.article_description}
 									</CardDescription>
-									<CardDescription className="text-center font-semibold">
+									<CardDescription className="font-semibold text-center">
 										Leer más
 									</CardDescription>
 								</CardContent>
 
-								<CardFooter className="flex gap-2 w-full items-center">
+								<CardFooter className="flex items-center w-full gap-2">
 									{mediaIconUrl && (
 										<img
 											src={mediaIconUrl}
 											alt="Media Icon"
-											className="w-6 h-6 rounded-full object-contain bg-white border border-slate-100"
+											className="object-contain w-6 h-6 bg-white border rounded-full border-slate-100"
 										/>
 									)}
-									<p className="font-bold text-sm capitalize">
+									<p className="text-sm font-bold capitalize">
 										{item.editorial_name}
 									</p>
 									<time
 										dateTime={item.date_of_publication || ""}
-										className="font-bold text-sm capitalize"
+										className="text-sm font-bold capitalize"
 									>
 										{item.date_of_publication
 											? new Date(item.date_of_publication).toLocaleDateString(

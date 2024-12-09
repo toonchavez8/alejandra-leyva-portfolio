@@ -25,11 +25,8 @@ export default function RootLayout({
 	children: React.ReactNode;
 }>) {
 	return (
-		<html
-			lang="en"
-			className={`${lato.variable} ${italiana.variable} bg-slate-900`}
-		>
-			<body>
+		<html lang="en" className={`${lato.variable} ${italiana.variable}`}>
+			<body className="bg-[#dfe0e0]">
 				<SidebarProvider>
 					<SideNav />
 					<main className="relative w-full @container bg-[#dfe0e0]">

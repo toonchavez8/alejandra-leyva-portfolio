@@ -23,13 +23,13 @@ export type ProjectCardsProps = SliceComponentProps<Content.ProjectCardsSlice>;
 			className="-mb-20"
 		>
 			<div className="flex flex-col w-full">
-				<h2 className="mb-4 text-2xl font-italiana">
+				<h2 className="text-2xl font-italiana">
 					<PrismicText field={slice.primary.section_title} />
 				</h2>
-				<div className="grid gap-4 justify-items-end md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1 ">
+				<div className="grid items-end gap-4 @md:grid-cols-2 @3xl:grid-cols-3 @sm:grid-cols-1 auto-rows-fr">
 					{slice.primary.card_group.map((item) => (
 						<PrismicNextLink key={item.card_title} field={item.page_link}>
-							<article className="flex flex-col justify-end gap-2 p-4 text-balance ">
+							<article className="flex flex-col gap-2 p-4 justify-self-end text-balance ">
 								<h3 className="text-lg ">{item.card_title}</h3>
 								<PrismicNextImage
 									field={item.gallery_image}
