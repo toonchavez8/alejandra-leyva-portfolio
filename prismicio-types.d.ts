@@ -75,6 +75,120 @@ export type ComisionDocument<Lang extends string = string> =
     Lang
   >;
 
+type ComisionProjectDocumentDataSlicesSlice =
+  | PhotoGridSlice
+  | MediaGridSlice
+  | ProjectCardsSlice
+  | HeroGridSlice
+  | TwoColContentSlice
+  | RichTextSlice;
+
+/**
+ * Content for comision_project documents
+ */
+interface ComisionProjectDocumentData {
+  /**
+   * commissionuid field in *comision_project*
+   *
+   * - **Field Type**: Content Relationship
+   * - **Placeholder**: *None*
+   * - **API ID Path**: comision_project.commissionuid
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+   */
+  commissionuid: prismic.ContentRelationshipField<"commissionuid">;
+
+  /**
+   * Slice Zone field in *comision_project*
+   *
+   * - **Field Type**: Slice Zone
+   * - **Placeholder**: *None*
+   * - **API ID Path**: comision_project.slices[]
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#slices
+   */
+  slices: prismic.SliceZone<ComisionProjectDocumentDataSlicesSlice> /**
+   * Meta Title field in *comision_project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A title of the page used for social media and search engines
+   * - **API ID Path**: comision_project.meta_title
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */;
+  meta_title: prismic.KeyTextField;
+
+  /**
+   * Meta Description field in *comision_project*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: A brief summary of the page
+   * - **API ID Path**: comision_project.meta_description
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  meta_description: prismic.KeyTextField;
+
+  /**
+   * Meta Image field in *comision_project*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: comision_project.meta_image
+   * - **Tab**: SEO & Metadata
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * comision_project document from Prismic
+ *
+ * - **API ID**: `comision_project`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ComisionProjectDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<ComisionProjectDocumentData>,
+    "comision_project",
+    Lang
+  >;
+
+/**
+ * Content for commissionuid documents
+ */
+interface CommissionuidDocumentData {
+  /**
+   * comission name field in *commissionuid*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: commissionuid.comission_name
+   * - **Tab**: Main
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  comission_name: prismic.KeyTextField;
+}
+
+/**
+ * commissionuid document from Prismic
+ *
+ * - **API ID**: `commissionuid`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type CommissionuidDocument<Lang extends string = string> =
+  prismic.PrismicDocumentWithUID<
+    Simplify<CommissionuidDocumentData>,
+    "commissionuid",
+    Lang
+  >;
+
 type ContactDocumentDataSlicesSlice = ContactSlice;
 
 /**
@@ -471,6 +585,8 @@ export type WorkDocument<Lang extends string = string> =
 
 export type AllDocumentTypes =
   | ComisionDocument
+  | ComisionProjectDocument
+  | CommissionuidDocument
   | ContactDocument
   | MenuSettingsDocument
   | PageDocument
@@ -1091,6 +1207,11 @@ declare module "@prismicio/client" {
       ComisionDocument,
       ComisionDocumentData,
       ComisionDocumentDataSlicesSlice,
+      ComisionProjectDocument,
+      ComisionProjectDocumentData,
+      ComisionProjectDocumentDataSlicesSlice,
+      CommissionuidDocument,
+      CommissionuidDocumentData,
       ContactDocument,
       ContactDocumentData,
       ContactDocumentDataSlicesSlice,
