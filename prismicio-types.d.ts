@@ -915,6 +915,31 @@ export interface PhotoGridSliceDefaultPrimaryGridOfImagesItem {
 }
 
 /**
+ * Item in *PhotoGrid → Grid with tittle → Primary → Grid of Images*
+ */
+export interface PhotoGridSliceGridWithTittlePrimaryGridOfImagesItem {
+  /**
+   * Image field in *PhotoGrid → Grid with tittle → Primary → Grid of Images*
+   *
+   * - **Field Type**: Image
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.gridWithTittle.primary.grid_of_images[].image
+   * - **Documentation**: https://prismic.io/docs/field#image
+   */
+  image: prismic.ImageField<never>;
+
+  /**
+   * Image Description field in *PhotoGrid → Grid with tittle → Primary → Grid of Images*
+   *
+   * - **Field Type**: Rich Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.gridWithTittle.primary.grid_of_images[].image_description
+   * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+   */
+  image_description: prismic.RichTextField;
+}
+
+/**
  * Primary content in *PhotoGrid → Default → Primary*
  */
 export interface PhotoGridSliceDefaultPrimary {
@@ -945,9 +970,51 @@ export type PhotoGridSliceDefault = prismic.SharedSliceVariation<
 >;
 
 /**
+ * Primary content in *PhotoGrid → Grid with tittle → Primary*
+ */
+export interface PhotoGridSliceGridWithTittlePrimary {
+  /**
+   * Tittle field in *PhotoGrid → Grid with tittle → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.gridWithTittle.primary.title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  title: prismic.KeyTextField;
+
+  /**
+   * Grid of Images field in *PhotoGrid → Grid with tittle → Primary*
+   *
+   * - **Field Type**: Group
+   * - **Placeholder**: *None*
+   * - **API ID Path**: photo_grid.gridWithTittle.primary.grid_of_images[]
+   * - **Documentation**: https://prismic.io/docs/field#group
+   */
+  grid_of_images: prismic.GroupField<
+    Simplify<PhotoGridSliceGridWithTittlePrimaryGridOfImagesItem>
+  >;
+}
+
+/**
+ * Grid with tittle variation for PhotoGrid Slice
+ *
+ * - **API ID**: `gridWithTittle`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PhotoGridSliceGridWithTittle = prismic.SharedSliceVariation<
+  "gridWithTittle",
+  Simplify<PhotoGridSliceGridWithTittlePrimary>,
+  never
+>;
+
+/**
  * Slice variation for *PhotoGrid*
  */
-type PhotoGridSliceVariation = PhotoGridSliceDefault;
+type PhotoGridSliceVariation =
+  | PhotoGridSliceDefault
+  | PhotoGridSliceGridWithTittle;
 
 /**
  * PhotoGrid Shared Slice
@@ -1246,8 +1313,11 @@ declare module "@prismicio/client" {
       PhotoGridSlice,
       PhotoGridSliceDefaultPrimaryGridOfImagesItem,
       PhotoGridSliceDefaultPrimary,
+      PhotoGridSliceGridWithTittlePrimaryGridOfImagesItem,
+      PhotoGridSliceGridWithTittlePrimary,
       PhotoGridSliceVariation,
       PhotoGridSliceDefault,
+      PhotoGridSliceGridWithTittle,
       ProjectCardsSlice,
       ProjectCardsSliceDefaultPrimaryCardGroupItem,
       ProjectCardsSliceDefaultPrimary,

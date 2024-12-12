@@ -46,11 +46,19 @@ const PhotoGrid = ({ slice }: PhotoGridProps): JSX.Element => {
 		alt: string;
 	}[]; // Add filter and type assertion
 
+	// Type narrowing to check if title exists
+	const hasTitle = "title" in slice.primary;
+
 	return (
 		<Bounded
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
 		>
+			{slice.variation === "gridWithTittle" && (
+				<h2 className="items-start mb-10 mr-auto text-4xl leading-tight tracking-tighter text-left font-italiana">
+					{slice.primary.title}
+				</h2>
+			)}
 			<ColumnsPhotoAlbum
 				photos={photos}
 				columns={(containerWidth) => {
