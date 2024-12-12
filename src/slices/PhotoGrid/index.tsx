@@ -25,6 +25,7 @@ export type PhotoGridProps = SliceComponentProps<Content.PhotoGridSlice>;
 /**
  * Component for "PhotoGrid" Slices.
  */
+
 const PhotoGrid = ({ slice }: PhotoGridProps): JSX.Element => {
 	const [index, setIndex] = useState(-1);
 
