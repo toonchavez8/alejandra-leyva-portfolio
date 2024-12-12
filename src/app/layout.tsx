@@ -26,6 +26,12 @@ export default function RootLayout({
 }>) {
 	return (
 		<html lang="en" className={`${lato.variable} ${italiana.variable}`}>
+			<head>
+				<link rel="preconnect" href="https://images.prismic.io" />
+				<link rel="dns-prefetch" href="https://images.prismic.io" />
+				<link rel="preconnect" href="https://prismic-io.s3.amazonaws.com" />
+				<link rel="dns-prefetch" href="https://prismic-io.s3.amazonaws.com" />
+			</head>
 			<body className="bg-[#dfe0e0]">
 				<SidebarProvider>
 					<SideNav />

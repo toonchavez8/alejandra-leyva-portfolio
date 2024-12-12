@@ -17,6 +17,11 @@ const routes: prismic.ClientConfig["routes"] = [
 	{ type: "project", path: "/proyectos-personales/:uid" },
 	{ type: "work", path: "/trabajos-multidisciplinarios/:uid" },
 	{ type: "comision", path: "/comisiones-y-publicaciones/:uid" },
+	{
+		type: "comision_project",
+		path: "/comisiones-y-publicaciones/commission/:commission/:uid",
+		resolvers: { commission: "commissionuid" },
+	},
 ];
 
 /**

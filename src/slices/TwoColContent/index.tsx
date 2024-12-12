@@ -26,7 +26,7 @@ const TwoColContent = ({ slice }: TwoColContentProps): JSX.Element => {
 				<PrismicRichText field={slice.primary.contenido} />
 				<PrismicNextImage
 					field={slice.primary.imagen}
-					className="object-contain w-full mx-auto max-w-96"
+					className="object-contain w-full mx-auto sm:min-w-40 md:min-w-80 max-w-96"
 				/>
 			</article>
 			{slice.primary.cv_download && (
