@@ -28,13 +28,13 @@ type RichTextProps = SliceComponentProps<Content.RichTextSlice>;
  */
 const RichText = ({ slice }: RichTextProps): JSX.Element => {
 	return (
-		<Bounded className="flex flex-col gap-5 text-balance ">
-			<article className="flex flex-col gap-5 max-w-3xl ">
+		<Bounded className="flex flex-col gap-5 text-balance">
+			<article className="flex flex-col max-w-3xl gap-5 -mt-10 text-balance">
 				<PrismicRichText
 					field={slice.primary.content}
 					components={{
 						heading1: ({ children }) => (
-							<h1 className="text-2xl @md:text-4xl font-italiana @3xl:-ms-8">
+							<h1 className="text-2xl @md:text-4xl text-balance font-italiana @3xl:-ms-8">
 								{children}
 							</h1>
 						),
@@ -56,10 +56,12 @@ const RichText = ({ slice }: RichTextProps): JSX.Element => {
 							<h6 className="text-sm @md:text-base">{children}</h6>
 						),
 						paragraph: ({ children }) => (
-							<p className="text-sm @md:text-base  w-full">{children}</p>
+							<p className="text-sm @md:text-base text-balance w-full">
+								{children}
+							</p>
 						),
 						image: ({ node }) => (
-							<img src={node.url} className="w-full max-w-3xl mx-auto" />
+							<img src={node.url} className="w-full max-w-3xl mx-auto " />
 						),
 						oListItem: ({ children }) => (
 							<li className="text-sm @md:text-base ps-8 list-item list-decimal list-inside w-full">
