@@ -12,11 +12,46 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "section_title": {
+          "type": "Text",
+          "config": {
+            "label": "Section Title",
+            "placeholder": "¡Hablemos y Conectemos!"
+          }
+        },
+        "copy": {
+          "type": "Text",
+          "config": {
+            "label": "Copy",
+            "placeholder": "Mandame un correo"
+          }
+        },
         "email": {
           "type": "Text",
           "config": {
             "label": "Email",
             "placeholder": ""
+          }
+        },
+        "emailcopy": {
+          "type": "Text",
+          "config": {
+            "label": "EmailCopy",
+            "placeholder": ""
+          }
+        },
+        "social_media_title": {
+          "type": "Text",
+          "config": {
+            "label": "social media title",
+            "placeholder": ""
+          }
+        },
+        "social_media_copy": {
+          "type": "Text",
+          "config": {
+            "label": "Social Media copy",
+            "placeholder": "Encuentra mis redes"
           }
         },
         "social_media": {

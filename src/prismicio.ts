@@ -22,6 +22,10 @@ const routes: prismic.ClientConfig["routes"] = [
 		path: "/comisiones-y-publicaciones/commission/:commission/:uid",
 		resolvers: { commission: "commissionuid" },
 	},
+	{
+		type: "contact",
+		path: "/contact",
+	},
 ];
 
 /**

@@ -623,6 +623,26 @@ export interface ContactSliceDefaultPrimarySocialMediaItem {
  */
 export interface ContactSliceDefaultPrimary {
   /**
+   * Section Title field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: ¡Hablemos y Conectemos!
+   * - **API ID Path**: contact.default.primary.section_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  section_title: prismic.KeyTextField;
+
+  /**
+   * Copy field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Mandame un correo
+   * - **API ID Path**: contact.default.primary.copy
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  copy: prismic.KeyTextField;
+
+  /**
    * Email field in *Contact → Default → Primary*
    *
    * - **Field Type**: Text
@@ -631,6 +651,36 @@ export interface ContactSliceDefaultPrimary {
    * - **Documentation**: https://prismic.io/docs/field#key-text
    */
   email: prismic.KeyTextField;
+
+  /**
+   * EmailCopy field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.emailcopy
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  emailcopy: prismic.KeyTextField;
+
+  /**
+   * social media title field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: *None*
+   * - **API ID Path**: contact.default.primary.social_media_title
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  social_media_title: prismic.KeyTextField;
+
+  /**
+   * Social Media copy field in *Contact → Default → Primary*
+   *
+   * - **Field Type**: Text
+   * - **Placeholder**: Encuentra mis redes
+   * - **API ID Path**: contact.default.primary.social_media_copy
+   * - **Documentation**: https://prismic.io/docs/field#key-text
+   */
+  social_media_copy: prismic.KeyTextField;
 
   /**
    * Social Media field in *Contact → Default → Primary*
