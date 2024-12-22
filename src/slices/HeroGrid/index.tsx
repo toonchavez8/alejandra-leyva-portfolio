@@ -1,9 +1,9 @@
 "use client";
-import Bounded from "@/components/atomic/Bounded";
+
 import { Content } from "@prismicio/client";
 
 import { SliceComponentProps } from "@prismicio/react";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Lightbox from "yet-another-react-lightbox";
 import Inline from "yet-another-react-lightbox/plugins/inline";
 import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen";
@@ -40,15 +40,16 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 	// Prepare slides data for the Lightbox component
 	const slides = slice.primary.hero_image.map((item) => ({
 		src: item.carusel_image.url ?? "", // Ensure src is always a string
-		alt: item.image_description || "Hero Image",
+		alt: item.image_description ?? "Hero Image",
 		width: item.carusel_image.dimensions?.width,
 		height: item.carusel_image.dimensions?.height,
 	}));
 
 	return (
-		<Bounded
+		<section
 			data-slice-type={slice.slice_type}
 			data-slice-variation={slice.variation}
+			className="p-8   @6xl:p-16 @6xl:mt-0	"
 		>
 			{/* Lightbox for image viewing with carousel functionality */}
 			<Lightbox
@@ -69,7 +70,6 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 				inline={{
 					style: {
 						width: "100%",
-						maxWidth: "900px",
 						aspectRatio: "3 / 2",
 						margin: "0 auto",
 					},
@@ -84,7 +84,7 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 				animation={{ fade: 0 }}
 				controller={{ closeOnPullDown: true, closeOnBackdropClick: true }}
 			/>
-		</Bounded>
+		</section>
 	);
 };
 

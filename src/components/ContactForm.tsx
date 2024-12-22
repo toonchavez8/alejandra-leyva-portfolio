@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 
-export default function ContactForm({ copy }: { copy: string }) {
+export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 	const [isLoading, setIsLoading] = useState(false);
 	const { toast } = useToast();
 
