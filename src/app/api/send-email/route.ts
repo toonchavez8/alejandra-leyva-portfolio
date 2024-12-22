@@ -10,13 +10,16 @@ export async function POST(req: Request) {
 			user: process.env.EMAIL_USER, // Your email address
 			pass: process.env.EMAIL_PASS, // Your email password or app-specific password
 		},
+		tls: {
+			rejectUnauthorized: false, // Allow self-signed certificates
+		},
 	});
 
 	// Email options
 	const mailOptions = {
-		from: process.env.EMAIL_USER,
+		from: email,
 		to: process.env.EMAIL_TO, // The recipient email address
-		subject: `New message from ${name}`,
+		subject: `Nuevo mensaje de ${name}`,
 		text: `Message from ${name} (${email}):\n\n${message}`,
 	};
 
