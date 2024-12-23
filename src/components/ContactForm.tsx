@@ -17,6 +17,37 @@ export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 		const formData = new FormData(event.currentTarget);
 		const formObject = Object.fromEntries(formData.entries()); // Convert FormData to a plain object
 
+		// Check honeypot field
+		if (formObject.honeypot) {
+			setIsLoading(false);
+			return; // Stop form submission if honeypot field is filled
+		}
+
+		// Validate email format
+		const email = formObject.email as string;
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // Simple email regex
+		if (!emailRegex.test(email)) {
+			setIsLoading(false);
+			toast({
+				title: "Email inválido",
+				description: "Por favor, introduzca un correo electrónico válido.",
+				variant: "destructive", // Display a destructive (error) toast
+			});
+			return;
+		}
+
+		// Validate message length
+		const message = formObject.message as string;
+		if (message.trim().length < 10) {
+			setIsLoading(false);
+			toast({
+				title: "Mensaje demasiado corto",
+				description: "El mensaje debe tener al menos 10 caracteres.",
+				variant: "destructive", // Display a destructive (error) toast
+			});
+			return;
+		}
+
 		try {
 			const response = await fetch("/api/send-email", {
 				method: "POST",
@@ -77,6 +108,15 @@ export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 				placeholder="Your Message"
 				required
 				className="bg-white"
+			/>
+
+			{/* Hidden honeypot field */}
+			<Input
+				type="text"
+				name="honeypot"
+				className="hidden"
+				tabIndex={-1}
+				autoComplete="off"
 			/>
 
 			<Button type="submit" disabled={isLoading}>
