@@ -36,7 +36,7 @@ const PhotoGrid = ({ slice }: PhotoGridProps): JSX.Element => {
 				src: image.image.url,
 				width: image.image.dimensions.width,
 				height: image.image.dimensions.height,
-				alt: image.image.alt || "",
+				alt: image.image.alt ?? "",
 			};
 		})
 		.filter((photo) => photo !== null) as {
@@ -45,9 +45,6 @@ const PhotoGrid = ({ slice }: PhotoGridProps): JSX.Element => {
 		height: number;
 		alt: string;
 	}[]; // Add filter and type assertion
-
-	// Type narrowing to check if title exists
-	const hasTitle = "title" in slice.primary;
 
 	return (
 		<Bounded
@@ -66,22 +63,7 @@ const PhotoGrid = ({ slice }: PhotoGridProps): JSX.Element => {
 					if (containerWidth < 800) return 2;
 					return 3;
 				}}
-				componentsProps={(containerWidth) => ({
-					image: { loading: (containerWidth || 0) > 600 ? "eager" : "lazy" },
-				})}
 				onClick={({ index }) => setIndex(index)}
-				skeleton={
-					<div
-						className={clsx(
-							"w-full h-full",
-							"bg-gray-100",
-							"flex items-center justify-center",
-							"text-gray-500 animate-pulse"
-						)}
-					>
-						<div className="w-full h-full bg-gray-200 rounded-lg animate-pulse" />
-					</div>
-				}
 			/>
 			<Lightbox
 				slides={photos}

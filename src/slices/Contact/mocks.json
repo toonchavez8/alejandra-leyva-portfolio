@@ -5,8 +5,8 @@
 		"primary": {
 			"email": {
 				"__TYPE__": "FieldContent",
-				"value": "race",
-				"type": "Text"
+				"type": "Text",
+				"value": "toonchavez8@gmail.com"
 			},
 			"social_media": {
 				"__TYPE__": "GroupContentType",
@@ -21,21 +21,38 @@
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "http://twitter.com",
-										"text": "mirror"
+										"text": "Test"
 									}
-								}
-							],
-							[
-								"user_name",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "earn",
-									"type": "Text"
 								}
 							]
 						]
 					}
 				]
+			},
+			"copy": {
+				"__TYPE__": "FieldContent",
+				"value": "two",
+				"type": "Text"
+			},
+			"social_media_copy": {
+				"__TYPE__": "FieldContent",
+				"value": "purpose",
+				"type": "Text"
+			},
+			"section_title": {
+				"__TYPE__": "FieldContent",
+				"value": "melted",
+				"type": "Text"
+			},
+			"emailcopy": {
+				"__TYPE__": "FieldContent",
+				"value": "coach",
+				"type": "Text"
+			},
+			"social_media_title": {
+				"__TYPE__": "FieldContent",
+				"value": "gradually",
+				"type": "Text"
 			}
 		},
 		"items": []
