@@ -1,3 +1,4 @@
+"use client";
 import Bounded from "@/components/atomic/Bounded";
 import { Content } from "@prismicio/client";
 import { PrismicNextLink } from "@prismicio/next";
@@ -31,9 +32,32 @@ const getSocialMediaIconFromLink = (url: string) => {
 };
 
 /**
+ * Encrypt email address with a simple obfuscation method.
+ */
+const obfuscateEmail = (email: string): string => {
+	return btoa(email); // Base64 encode the email
+};
+
+/**
+ * Decrypt the obfuscated email address.
+ */
+const deobfuscateEmail = (encodedEmail: string): string => {
+	return atob(encodedEmail); // Base64 decode the email
+};
+
+/**
  * Component for "Contact" Slices.
  */
 const Contact = ({ slice }: ContactProps): JSX.Element => {
+	const encryptedEmail = obfuscateEmail(slice.primary.email || "");
+
+	const handleEmailClick = () => {
+		const email = deobfuscateEmail(encryptedEmail);
+
+		// Open the user's default email client with the email address pre-filled
+		window.location.href = `mailto:${email}`;
+	};
+
 	return (
 		<Bounded
 			data-slice-type={slice.slice_type}
@@ -81,15 +105,14 @@ const Contact = ({ slice }: ContactProps): JSX.Element => {
 								</Button>
 							);
 						})}
-						<a href={`mailto:${slice.primary.email}`}>
-							<Button
-								variant="outline"
-								className="items-center justify-start hover:invert"
-							>
-								<Mail className="w-4 h-4 mr-2" />
-								Correo
-							</Button>
-						</a>
+						<Button
+							onClick={handleEmailClick}
+							variant="outline"
+							className="items-center justify-start hover:invert"
+						>
+							<Mail className="w-4 h-4 mr-2" />
+							Correo
+						</Button>
 					</div>
 				</article>
 			</div>

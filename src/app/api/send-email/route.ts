@@ -25,19 +25,18 @@ export async function POST(req: Request) {
 
 	try {
 		const info = await transporter.sendMail(mailOptions);
-		console.log("Email sent successfully:", info.response);
+
 		return new Response(JSON.stringify({ success: true }), { status: 200 });
 	} catch (error: unknown) {
 		// Type guard for error object
 		if (error instanceof Error) {
-			console.error("Error sending email:", error);
 			return new Response(
 				JSON.stringify({ success: false, error: error.message }),
 				{ status: 500 }
 			);
 		} else {
 			// Fallback if error is not an instance of Error
-			console.error("Unknown error:", error);
+
 			return new Response(
 				JSON.stringify({ success: false, error: "An unknown error occurred." }),
 				{ status: 500 }

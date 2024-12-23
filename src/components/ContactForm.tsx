@@ -80,7 +80,6 @@ export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 				description: "Hubo un error al enviar el mensaje.",
 				variant: "destructive", // Display a destructive (error) toast
 			});
-			console.error("Error sending email:", error);
 		}
 	}
 
