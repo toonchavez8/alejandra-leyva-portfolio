@@ -72,6 +72,7 @@ const HeroGrid = ({ slice }: HeroGridProps): JSX.Element => {
 						width: "100%",
 						aspectRatio: "3 / 2",
 						margin: "0 auto",
+						maxHeight: "51rem",
 					},
 				}}
 			/>
