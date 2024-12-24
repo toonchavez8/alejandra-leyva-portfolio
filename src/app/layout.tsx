@@ -5,6 +5,7 @@ import { Italiana, Lato } from "next/font/google";
 import SideNav from "@/components/SideNav";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
+import { LanguageProvider } from "@/context/LanguageContext";
 
 const italiana = Italiana({
 	subsets: ["latin"],
@@ -34,14 +35,16 @@ export default function RootLayout({
 				<link rel="dns-prefetch" href="https://prismic-io.s3.amazonaws.com" />
 			</head>
 			<body className="bg-[#dfe0e0]">
-				<SidebarProvider>
-					<SideNav />
-					<main className="relative w-full @container bg-[#dfe0e0]">
-						<SidebarTrigger className="absolute top-0 z-50 left-5" />
-						{children}
-					</main>
-					<Toaster />
-				</SidebarProvider>
+				<LanguageProvider>
+					<SidebarProvider>
+						<SideNav />
+						<main className="relative w-full @container bg-[#dfe0e0]">
+							<SidebarTrigger className="absolute top-0 z-50 left-5" />
+							{children}
+						</main>
+						<Toaster />
+					</SidebarProvider>
+				</LanguageProvider>
 			</body>
 			<PrismicPreview repositoryName={repositoryName} />
 		</html>

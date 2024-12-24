@@ -16,9 +16,11 @@ import { usePathname } from "next/navigation";
 import { asLink } from "@prismicio/client";
 import clsx from "clsx";
 import { Settings, NavigationItem } from "./types"; // Import types if placed in a separate file
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function SideNavClient({ settings }: { settings: Settings }) {
 	const pathName = usePathname();
+	const { lang, setLang } = useLanguage();
 
 	// Separate navigation items into regular and CTA items
 	const regularNavItems = settings.data.navigation.filter(
@@ -83,8 +85,22 @@ export default function SideNavClient({ settings }: { settings: Settings }) {
 				</PrismicNextLink>
 
 				<div className="flex gap-4 font-sans text-lg font-light text-gray-400">
-					<Link href="/">Eng</Link>
-					<Link href="/">Esp</Link>
+					<button
+						onClick={() => setLang("en-us")}
+						className={clsx("text-[18px] font-sans font-light", {
+							"font-bold underline": lang === "en-us",
+						})}
+					>
+						Eng
+					</button>
+					<button
+						onClick={() => setLang("es-mx")}
+						className={clsx("text-[18px] font-sans font-light", {
+							"font-bold underline": lang === "es-mx",
+						})}
+					>
+						Esp
+					</button>
 				</div>
 			</SidebarFooter>
 		</Sidebar>
