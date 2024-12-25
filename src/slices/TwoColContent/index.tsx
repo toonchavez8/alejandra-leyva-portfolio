@@ -23,7 +23,9 @@ const TwoColContent = ({ slice }: TwoColContentProps): JSX.Element => {
 			className="h-full "
 		>
 			<article className="flex flex-col-reverse h-full max-w-5xl gap-6 font-sans text-justify @xl:flex-col-reverse @2xl:flex-row">
-				<PrismicRichText field={slice.primary.contenido} />
+				<div className="flex flex-col prose-base ">
+					<PrismicRichText field={slice.primary.contenido} />
+				</div>
 				<PrismicNextImage
 					field={slice.primary.imagen}
 					className="object-contain w-full mx-auto sm:min-w-40 md:min-w-80 max-w-96"

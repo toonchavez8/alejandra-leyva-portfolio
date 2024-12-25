@@ -14,7 +14,7 @@ import {
 	CardTitle,
 } from "@/components/ui/card";
 import Link from "next/link";
-import { LinkProps } from "next/link";
+import { usePathname } from "next/navigation";
 
 export type MediaGridProps = SliceComponentProps<
 	Content.MediaGridSlice & {
@@ -35,6 +35,10 @@ export type MediaGridProps = SliceComponentProps<
 >;
 
 const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
+	const pathname = usePathname(); // Get the current pathname
+	const isEnglish = pathname.includes("en-us"); // Check if the pathname contains 'en-us'
+	const readMoreText = isEnglish ? "Read more" : "Leer más"; // Switch text based on the route
+
 	return (
 		<Bounded
 			data-slice-type={slice.slice_type}
@@ -96,7 +100,7 @@ const MediaGrid = ({ slice }: MediaGridProps): JSX.Element => {
 										{item.article_description}
 									</CardDescription>
 									<CardDescription className="font-semibold text-center">
-										Leer más
+										{readMoreText}
 									</CardDescription>
 								</CardContent>
 

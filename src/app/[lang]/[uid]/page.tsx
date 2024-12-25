@@ -1,17 +1,13 @@
+// ./src/app/[lang]/[uid]/page.tsx
+
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-
 import { SliceZone } from "@prismicio/react";
 import * as prismic from "@prismicio/client";
-
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
-type Params = { uid: string };
-
-/**
- * This page renders a Prismic Document dynamically based on the URL.
- */
+type Params = { uid: string; lang: string };
 
 export async function generateMetadata({
 	params,
@@ -19,12 +15,13 @@ export async function generateMetadata({
 	params: Params;
 }): Promise<Metadata> {
 	const client = createClient();
+	// ⬇️ Note this line with the `lang` parameter being passed in
 	const page = await client
-		.getByUID("page", params.uid)
+		.getByUID("page", params.uid, { lang: params.lang })
 		.catch(() => notFound());
 
 	return {
-		title: `${prismic.asText(page.data.title) ?? prismic.asText(page.data.title) + " portafolio "} `,
+		title: prismic.asText(page.data.title),
 		description: page.data.meta_description,
 		openGraph: {
 			title: page.data.meta_title || undefined,
@@ -39,8 +36,11 @@ export async function generateMetadata({
 
 export default async function Page({ params }: { params: Params }) {
 	const client = createClient();
+	// ⬇️ Note this line with the `lang` parameter being passed in
 	const page = await client
-		.getByUID("page", params.uid)
+		.getByUID("page", params.uid, {
+			lang: params.lang,
+		})
 		.catch(() => notFound());
 
 	return <SliceZone slices={page.data.slices} components={components} />;
@@ -49,17 +49,11 @@ export default async function Page({ params }: { params: Params }) {
 export async function generateStaticParams() {
 	const client = createClient();
 
-	/**
-	 * Query all Documents from the API, except the homepage.
-	 */
+	// ⬇️ Note this line using a '*' for the lang parameter
 	const pages = await client.getAllByType("page", {
 		predicates: [prismic.filter.not("my.page.uid", "home")],
+		lang: "*",
 	});
 
-	/**
-	 * Define a path for every Document.
-	 */
-	return pages.map((page) => {
-		return { uid: page.uid };
-	});
+	return pages.map((page) => ({ uid: page.uid, lang: page.lang }));
 }

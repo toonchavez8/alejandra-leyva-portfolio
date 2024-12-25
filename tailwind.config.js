@@ -8,6 +8,7 @@ module.exports = {
 	],
 	theme: {
 		extend: {
+			typography: {},
 			fontFamily: {
 				sans: ["var(--font-lato)"],
 				italiana: ["var(--font-Italiana)"],
@@ -74,5 +75,6 @@ module.exports = {
 	plugins: [
 		require("tailwindcss-animate"),
 		require("@tailwindcss/container-queries"),
+		require("@tailwindcss/typography"),
 	],
 };
