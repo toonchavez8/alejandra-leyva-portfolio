@@ -27,5 +27,5 @@ export async function middleware(request: NextRequest) {
 
 export const config = {
 	// Don’t change the URL of Next.js assets starting with _next
-	matcher: ["/((?!_next).*)"],
+	matcher: ["/((?!_next|api).*)"],
 };

@@ -47,7 +47,7 @@ export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 			});
 			return;
 		}
-
+		console.log(formObject);
 		try {
 			const response = await fetch("/api/send-email", {
 				method: "POST",
@@ -75,6 +75,7 @@ export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 			}
 		} catch (error) {
 			setIsLoading(false);
+			console.error("Error:", error);
 			toast({
 				title: "¡Lo sentimos!",
 				description: "Hubo un error al enviar el mensaje.",
