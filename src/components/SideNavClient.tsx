@@ -17,16 +17,38 @@ import { asLink } from "@prismicio/client";
 import clsx from "clsx";
 import { Settings, NavigationItem } from "./types"; // Import types if placed in a separate file
 import { useLanguage } from "@/context/LanguageContext";
+import { useEffect, useState } from "react";
+import { createClient } from "@/prismicio";
 
 export default function SideNavClient({ settings }: { settings: Settings }) {
 	const pathName = usePathname();
 	const { lang, setLang } = useLanguage();
+	const [navigationItems, setNavigationItems] = useState<NavigationItem[]>(
+		settings.data.navigation
+	);
+
+	const [subslogan, setSubslogan] = useState(settings.data.subslogan);
+
+	// Fetch content based on language
+	useEffect(() => {
+		const fetchContent = async () => {
+			const client = createClient();
+			const newSettings: Settings = await client.getSingle("menu_settings", {
+				lang,
+			});
+			setNavigationItems(newSettings.data.navigation);
+			console.log("Fetched Settings:", newSettings); // Debug here
+			setSubslogan(newSettings.data.subslogan); // Update subslogan when language changes
+		};
+
+		fetchContent();
+	}, [lang]); // Re-fetch content when language changes
 
 	// Separate navigation items into regular and CTA items
-	const regularNavItems = settings.data.navigation.filter(
+	const regularNavItems = navigationItems.filter(
 		(item: NavigationItem) => !item.cta_button
 	);
-	const ctaNavItems = settings.data.navigation.filter(
+	const ctaNavItems = navigationItems.filter(
 		(item: NavigationItem) => item.cta_button
 	);
 
@@ -42,7 +64,7 @@ export default function SideNavClient({ settings }: { settings: Settings }) {
 						{settings.data.site_name}
 					</span>
 					<span className="font-sans text-lg md:text-[1rem] font-thin md:font-light tracking-[3px] -mt-2 md:-mt-0">
-						{settings.data.subslogan}
+						{subslogan}
 					</span>
 				</Link>
 			</SidebarHeader>
@@ -59,7 +81,7 @@ export default function SideNavClient({ settings }: { settings: Settings }) {
 										field={item.link}
 										className={clsx(
 											"font-sans text-lg font-light text-gray-950/50 md:text-[18px] hover:text-gray-800 hover:scale-110 antialiased",
-											{ "font-bold text-gray-800": isActive } // Add bold and darker text for the active link
+											{ "font-bold text-gray-800": isActive }
 										)}
 										aria-current={isActive ? "page" : undefined}
 									>
@@ -73,7 +95,7 @@ export default function SideNavClient({ settings }: { settings: Settings }) {
 			</SidebarContent>
 
 			{/* Sidebar Footer */}
-			<SidebarFooter className="items-center gap-4 md:gap-6 pe-4">
+			<SidebarFooter className="items-center self-center w-full gap-4 max-w-64 md:gap-6 pe-4">
 				<PrismicNextLink
 					field={ctaNavItems[0].link}
 					className={buttonVariants({

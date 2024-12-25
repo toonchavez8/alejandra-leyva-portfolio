@@ -23,8 +23,10 @@ const lato = Lato({
 
 export default function RootLayout({
 	children,
+	params,
 }: Readonly<{
 	children: React.ReactNode;
+	params: { lang: string };
 }>) {
 	return (
 		<html lang="en" className={`${lato.variable} ${italiana.variable}`}>
@@ -37,7 +39,7 @@ export default function RootLayout({
 			<body className="bg-[#dfe0e0]">
 				<LanguageProvider>
 					<SidebarProvider>
-						<SideNav />
+						<SideNav params={params} />
 						<main className="relative w-full @container bg-[#dfe0e0]">
 							<SidebarTrigger className="absolute top-0 z-50 left-5" />
 							{children}
