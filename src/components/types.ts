@@ -13,3 +13,9 @@ export interface Settings {
 		navigation: NavigationItem[];
 	};
 }
+
+export interface Locale {
+	lang: string;
+	lang_name: string;
+	url: string;
+}

@@ -5,12 +5,14 @@ import { SliceZone } from "@prismicio/react";
 import { createClient } from "@/prismicio";
 import { components } from "@/slices";
 
-type Params = { uid: string };
+type Params = { uid: string; lang: string };
 
 export default async function Page({ params }: { params: Promise<Params> }) {
-	const { uid } = await params;
+	const { uid, lang } = await params;
 	const client = createClient();
-	const page = await client.getByUID("comision", uid).catch(() => notFound());
+	const page = await client
+		.getByUID("comision", uid, { lang: lang })
+		.catch(() => notFound());
 
 	return <SliceZone slices={page.data.slices} components={components} />;
 }
@@ -20,9 +22,11 @@ export async function generateMetadata({
 }: {
 	params: Promise<Params>;
 }): Promise<Metadata> {
-	const { uid } = await params;
+	const { uid, lang } = await params;
 	const client = createClient();
-	const page = await client.getByUID("comision", uid).catch(() => notFound());
+	const page = await client
+		.getByUID("comision", uid, { lang: lang })
+		.catch(() => notFound());
 
 	return {
 		title: page.data.meta_title,
@@ -32,9 +36,9 @@ export async function generateMetadata({
 
 export async function generateStaticParams() {
 	const client = createClient();
-	const pages = await client.getAllByType("comision");
+	const pages = await client.getAllByType("comision", { lang: "*" });
 
 	return pages.map((page) => {
-		return { uid: page.uid };
+		return { uid: page.uid, lang: page.lang };
 	});
 }
