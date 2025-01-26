@@ -6,6 +6,8 @@ import SideNav from "@/components/SideNav";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { Toaster } from "@/components/ui/toaster";
 import { LanguageProvider } from "@/context/LanguageContext";
+import { icons } from "lucide-react";
+import { url } from "inspector";
 
 const italiana = Italiana({
 	subsets: ["latin"],
@@ -35,6 +37,7 @@ export default function RootLayout({
 				<link rel="dns-prefetch" href="https://images.prismic.io" />
 				<link rel="preconnect" href="https://prismic-io.s3.amazonaws.com" />
 				<link rel="dns-prefetch" href="https://prismic-io.s3.amazonaws.com" />
+				<link rel="icon" href="/images/icon.ico" sizes="any" />
 			</head>
 			<body className="bg-[#dfe0e0]">
 				<LanguageProvider>
