@@ -47,7 +47,7 @@ export default function ContactForm({ copy }: Readonly<{ copy: string }>) {
 			});
 			return;
 		}
-		console.log(formObject);
+
 		try {
 			const response = await fetch("/api/send-email", {
 				method: "POST",

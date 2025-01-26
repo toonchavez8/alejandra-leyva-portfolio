@@ -37,7 +37,7 @@ export default function SideNavClient({ settings }: { settings: Settings }) {
 				lang,
 			});
 			setNavigationItems(newSettings.data.navigation);
-			console.log("Fetched Settings:", newSettings); // Debug here
+
 			setSubslogan(newSettings.data.subslogan); // Update subslogan when language changes
 		};
 
